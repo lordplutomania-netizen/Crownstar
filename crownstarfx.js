@@ -123,13 +123,34 @@ function openTelegram() {
     window.open('https://t.me/crownstarfx', '_blank');
 }
 
-// ==================== Pricing & Payment ====================
-let selectedPlanData = { name: '', amount: 0 };
+// ==================== PAYMENT SYSTEM ====================
+let selectedPlanInfo = { name: '', amount: 0, amountNaira: 0 };
+
+// Exchange rate (you can update this)
+const USD_TO_NGN = 1500;
 
 function selectPlan(planName, amount) {
-    selectedPlanData = { name: planName, amount: amount };
+    // Check if user is logged in
+    const currentUser = localStorage.getItem(STORAGE_KEYS.CURRENT_USER);
+    if (!currentUser) {
+        showNotification('Please login or register to enroll in a plan', 'info');
+        openAuthModal('login');
+        return;
+    }
+    
+    const amountNaira = amount * USD_TO_NGN;
+    selectedPlanInfo = { name: planName, amount: amount, amountNaira: amountNaira };
+    
     document.getElementById('selectedPlan').textContent = `${planName} Plan`;
     document.getElementById('selectedAmount').textContent = `$${amount}`;
+    document.getElementById('selectedAmountNaira').textContent = `₦${amountNaira.toLocaleString()}`;
+    
+    // Update payment amount in bank details
+    const paymentAmountSpan = document.getElementById('paymentAmount');
+    if (paymentAmountSpan) {
+        paymentAmountSpan.textContent = `₦${amountNaira.toLocaleString()}`;
+    }
+    
     document.getElementById('paymentModal').style.display = 'flex';
 }
 
@@ -137,38 +158,12 @@ function closePaymentModal() {
     document.getElementById('paymentModal').style.display = 'none';
 }
 
-function applyDiscount() {
-    const discountCode = document.getElementById('discountCode').value;
-    if (discountCode === 'CROWN30') {
-        const discountedAmount = selectedPlanData.amount * 0.7;
-        document.getElementById('selectedAmount').textContent = `$${discountedAmount.toFixed(2)} (30% off)`;
-        showNotification('30% discount applied!', 'success');
-    } else if (discountCode === '') {
-        showNotification('Please enter a coupon code', 'warning');
-    } else {
-        showNotification('Invalid coupon code', 'error');
-    }
-}
-
-function processPayment(method) {
-    let methodName = '';
-    switch(method) {
-        case 'card': methodName = 'Credit/Debit Card'; break;
-        case 'paypal': methodName = 'PayPal'; break;
-        case 'crypto': methodName = 'Cryptocurrency'; break;
-        case 'bank': methodName = 'Bank Transfer'; break;
-    }
-    
-    showNotification(`Redirecting to ${methodName} payment gateway...`, 'info');
-    
-    // Simulate payment processing
-    setTimeout(() => {
-        closePaymentModal();
-        showNotification('Payment successful! Check your email for access details.', 'success');
-        
-        // In production, redirect to actual payment gateway
-        // window.location.href = 'payment-gateway-url';
-    }, 2000);
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        showNotification('Copied to clipboard!', 'success');
+    }).catch(() => {
+        showNotification('Failed to copy', 'error');
+    });
 }
 
 // ==================== Testimonials Slider ====================
