@@ -1314,3 +1314,210 @@ h1, h2, h3, h4, h5, h6 {
         grid-template-columns: 1fr;
     }
 }
+/* ==================== PAYMENT MODAL STYLES ==================== */
+.payment-modal {
+    max-width: 500px;
+    width: 90%;
+}
+
+.bank-details {
+    animation: fadeIn 0.3s ease;
+}
+
+.bank-info-card {
+    background: var(--light-gray);
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.bank-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #E5E7EB;
+}
+
+.bank-header i {
+    font-size: 1.8rem;
+    color: var(--primary);
+}
+
+.bank-header h4 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--dark);
+}
+
+.bank-details-list {
+    margin-bottom: 24px;
+}
+
+.bank-detail-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.bank-detail-item label {
+    width: 130px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.bank-detail-item .detail-value {
+    flex: 1;
+    color: var(--dark-text);
+}
+
+.bank-detail-item .detail-value.highlight {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.bank-detail-item .detail-value.amount {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.copy-btn {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.payment-instructions {
+    background: rgba(220, 38, 38, 0.05);
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+}
+
+.payment-instructions h5 {
+    margin-bottom: 12px;
+    color: var(--primary);
+    font-size: 0.95rem;
+}
+
+.payment-instructions ol {
+    margin-left: 20px;
+    color: var(--dark-text);
+    margin-bottom: 16px;
+}
+
+.payment-instructions li {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.contact-options {
+    display: flex;
+    gap: 12px;
+    margin: 16px 0;
+    flex-wrap: wrap;
+}
+
+.whatsapp-btn, .whatsapp-mentor-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-btn {
+    background: #25D366;
+    color: white;
+}
+
+.whatsapp-mentor-btn {
+    background: #075E54;
+    color: white;
+}
+
+.whatsapp-btn:hover, .whatsapp-mentor-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-btn i, .whatsapp-mentor-btn i {
+    font-size: 1.2rem;
+}
+
+.instruction-note {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-top: 16px;
+    text-align: center;
+}
+
+.btn-close-modal {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid var(--gray);
+    color: var(--gray);
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-close-modal:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .bank-detail-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .bank-detail-item label {
+        width: auto;
+    }
+    
+    .copy-btn {
+        align-self: flex-start;
+        margin-top: 5px;
+    }
+    
+    .contact-options {
+        flex-direction: column;
+    }
+    
+    .whatsapp-btn, .whatsapp-mentor-btn {
+        justify-content: center;
+    }
+}
