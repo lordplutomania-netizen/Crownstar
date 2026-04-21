@@ -548,31 +548,74 @@
 
 <!-- Payment Modal -->
 <div id="paymentModal" class="modal">
-    <div class="modal-content">
+    <div class="modal-content payment-modal">
         <span class="modal-close" onclick="closePaymentModal()">&times;</span>
         <div class="modal-header">
             <h3>Complete Your Enrollment</h3>
             <p>Selected Plan: <strong id="selectedPlan">Monthly Plan</strong></p>
-            <p>Amount: <strong id="selectedAmount">$75</strong></p>
+            <p>Amount: <strong id="selectedAmount">$75</strong> / <strong id="selectedAmountNaira">₦0</strong></p>
         </div>
         <div class="modal-body">
-            <div class="payment-methods">
-                <button class="payment-method" onclick="processPayment('card')">
-                    <i class="fab fa-cc-visa"></i> Credit/Debit Card
-                </button>
-                <button class="payment-method" onclick="processPayment('paypal')">
-                    <i class="fab fa-paypal"></i> PayPal
-                </button>
-                <button class="payment-method" onclick="processPayment('crypto')">
-                    <i class="fab fa-bitcoin"></i> Cryptocurrency
-                </button>
-                <button class="payment-method" onclick="processPayment('bank')">
-                    <i class="fas fa-university"></i> Bank Transfer
-                </button>
-            </div>
-            <div class="discount-input">
-                <input type="text" id="discountCode" placeholder="Have a coupon code? Enter here">
-                <button onclick="applyDiscount()">Apply</button>
+            <!-- Bank Transfer Details -->
+            <div class="bank-details">
+                <div class="bank-info-card">
+                    <div class="bank-header">
+                        <i class="fas fa-university"></i>
+                        <h4>Bank Transfer Details</h4>
+                    </div>
+                    
+                    <div class="bank-details-list">
+                        <div class="bank-detail-item">
+                            <label>Bank Name:</label>
+                            <span class="detail-value">Wema Bank</span>
+                        </div>
+                        <div class="bank-detail-item">
+                            <label>Account Number:</label>
+                            <span class="detail-value highlight">0292589355</span>
+                            <button class="copy-btn" onclick="copyToClipboard('0292589355')">
+                                <i class="far fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="bank-detail-item">
+                            <label>Account Name:</label>
+                            <span class="detail-value">Elugbaju Oluwafolajinmi Emmanuel</span>
+                            <button class="copy-btn" onclick="copyToClipboard('Elugbaju Oluwafolajinmi Emmanuel')">
+                                <i class="far fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="bank-detail-item">
+                            <label>Amount to Pay:</label>
+                            <span class="detail-value amount" id="paymentAmount">₦0</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Instructions with WhatsApp -->
+                    <div class="payment-instructions">
+                        <h5><i class="fas fa-info-circle"></i> Payment Instructions:</h5>
+                        <ol>
+                            <li>Make a transfer to the account details above</li>
+                            <li>Use your <strong>email address</strong> as payment reference</li>
+                            <li>After payment, send your payment receipt/screenshot to:</li>
+                        </ol>
+                        
+                        <div class="contact-options">
+                            <a href="https://wa.me/2349123456789" target="_blank" class="whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i> WhatsApp Group
+                            </a>
+                            <a href="https://wa.me/2349123456789" target="_blank" class="whatsapp-mentor-btn">
+                                <i class="fab fa-whatsapp"></i> Contact Mentor Directly
+                            </a>
+                        </div>
+                        
+                        <p class="instruction-note">
+                            <i class="fas fa-clock"></i> Your account will be activated within 24 hours after sending your receipt.
+                        </p>
+                    </div>
+
+                    <button class="btn-close-modal" onclick="closePaymentModal()">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                </div>
             </div>
         </div>
     </div>
