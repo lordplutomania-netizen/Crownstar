@@ -1315,134 +1315,214 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 /* ==================== PAYMENT MODAL STYLES ==================== */
-.payment-modal {
-    max-width: 500px;
+.payment-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.payment-modal-box {
+    position: relative;
+    background: white;
     width: 90%;
+    max-width: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    animation: modalSlideIn 0.3s ease;
+    z-index: 10000;
 }
 
-.bank-details {
-    animation: fadeIn 0.3s ease;
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-.bank-info-card {
-    background: var(--light-gray);
-    border-radius: 16px;
-    padding: 24px;
-}
-
-.bank-header {
+.payment-modal-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-    padding-bottom: 16px;
-    border-bottom: 2px solid #E5E7EB;
-}
-
-.bank-header i {
-    font-size: 1.8rem;
-    color: var(--primary);
-}
-
-.bank-header h4 {
-    font-size: 1.2rem;
-    margin: 0;
-    color: var(--dark);
-}
-
-.bank-details-list {
-    margin-bottom: 24px;
-}
-
-.bank-detail-item {
-    display: flex;
-    align-items: center;
-    padding: 14px 0;
-    border-bottom: 1px solid #E5E7EB;
-}
-
-.bank-detail-item label {
-    width: 130px;
-    font-weight: 600;
-    color: var(--dark);
-}
-
-.bank-detail-item .detail-value {
-    flex: 1;
-    color: var(--dark-text);
-}
-
-.bank-detail-item .detail-value.highlight {
-    font-weight: 700;
-    color: var(--primary);
-    font-size: 1.1rem;
-}
-
-.bank-detail-item .detail-value.amount {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--primary);
-}
-
-.copy-btn {
-    background: transparent;
-    border: 1px solid var(--primary);
-    color: var(--primary);
-    padding: 6px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
-}
-
-.copy-btn:hover {
-    background: var(--primary);
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #DC2626 0%, #EA580C 100%);
     color: white;
 }
 
-.payment-instructions {
-    background: rgba(220, 38, 38, 0.05);
-    padding: 16px 20px;
+.payment-modal-header h3 {
+    margin: 0;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.payment-modal-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.payment-modal-body {
+    padding: 24px;
+}
+
+.plan-details {
+    background: #FEE2E2;
+    padding: 12px 16px;
     border-radius: 12px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
-.payment-instructions h5 {
-    margin-bottom: 12px;
-    color: var(--primary);
-    font-size: 0.95rem;
+.plan-details p {
+    margin: 5px 0;
 }
 
-.payment-instructions ol {
-    margin-left: 20px;
-    color: var(--dark-text);
+.plan-details strong {
+    color: #DC2626;
+}
+
+.bank-transfer-section {
+    margin-top: 10px;
+}
+
+.bank-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     margin-bottom: 16px;
 }
 
-.payment-instructions li {
-    margin-bottom: 8px;
+.bank-title i {
+    font-size: 1.3rem;
+    color: #DC2626;
+}
+
+.bank-title h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: #1F2937;
+}
+
+.bank-details {
+    background: #F9FAFB;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.bank-row {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #E5E7EB;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.bank-row:last-child {
+    border-bottom: none;
+}
+
+.bank-label {
+    width: 120px;
+    font-weight: 600;
+    color: #1F2937;
+    font-size: 0.85rem;
+}
+
+.bank-value {
+    flex: 1;
+    color: #374151;
+    font-size: 0.85rem;
+}
+
+.bank-value.highlight {
+    font-weight: 700;
+    color: #DC2626;
+    font-size: 1rem;
+}
+
+.copy-bank-btn {
+    background: transparent;
+    border: 1px solid #DC2626;
+    color: #DC2626;
+    padding: 4px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.copy-bank-btn:hover {
+    background: #DC2626;
+    color: white;
+}
+
+.payment-instructions-box {
+    background: #FFF5F5;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.payment-instructions-box h5 {
+    margin: 0 0 12px 0;
+    color: #DC2626;
     font-size: 0.9rem;
 }
 
-.contact-options {
+.payment-instructions-box ol {
+    margin: 0 0 16px 20px;
+    padding: 0;
+}
+
+.payment-instructions-box li {
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    color: #374151;
+}
+
+.whatsapp-buttons {
     display: flex;
     gap: 12px;
     margin: 16px 0;
     flex-wrap: wrap;
 }
 
-.whatsapp-btn, .whatsapp-mentor-btn {
+.whatsapp-group-btn, .whatsapp-mentor-btn {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 12px 20px;
+    gap: 8px;
+    padding: 10px 18px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
+    font-size: 0.85rem;
     transition: all 0.3s ease;
 }
 
-.whatsapp-btn {
+.whatsapp-group-btn {
     background: #25D366;
     color: white;
 }
@@ -1452,72 +1532,61 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
 }
 
-.whatsapp-btn:hover, .whatsapp-mentor-btn:hover {
+.whatsapp-group-btn:hover, .whatsapp-mentor-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.whatsapp-btn i, .whatsapp-mentor-btn i {
-    font-size: 1.2rem;
-}
-
-.instruction-note {
-    font-size: 0.8rem;
-    color: var(--gray);
-    margin-top: 16px;
+.activation-note {
+    font-size: 0.75rem;
+    color: #6B7280;
     text-align: center;
+    margin: 12px 0 0 0;
 }
 
-.btn-close-modal {
-    width: 100%;
-    padding: 12px;
+.payment-modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid #E5E7EB;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close-modal-btn {
+    padding: 10px 24px;
     background: transparent;
-    border: 2px solid var(--gray);
-    color: var(--gray);
-    border-radius: 12px;
-    font-weight: 600;
+    border: 2px solid #6B7280;
+    color: #6B7280;
+    border-radius: 10px;
     cursor: pointer;
+    font-weight: 600;
     transition: all 0.3s ease;
 }
 
-.btn-close-modal:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.close-modal-btn:hover {
+    border-color: #DC2626;
+    color: #DC2626;
 }
 
 /* Responsive */
 @media (max-width: 480px) {
-    .bank-detail-item {
+    .bank-row {
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
     }
     
-    .bank-detail-item label {
+    .bank-label {
         width: auto;
     }
     
-    .copy-btn {
-        align-self: flex-start;
-        margin-top: 5px;
-    }
-    
-    .contact-options {
+    .whatsapp-buttons {
         flex-direction: column;
     }
     
-    .whatsapp-btn, .whatsapp-mentor-btn {
+    .whatsapp-group-btn, .whatsapp-mentor-btn {
         justify-content: center;
+    }
+    
+    .payment-modal-box {
+        width: 95%;
     }
 }
