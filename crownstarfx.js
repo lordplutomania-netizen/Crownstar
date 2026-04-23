@@ -374,3 +374,34 @@ function calculateLotSize(riskAmount, stopLossPips, accountCurrency) {
 
 // Example usage - can be integrated into a calculator component
 console.log('CrownStarFX Website Loaded Successfully!');
+// ==================== PAYMENT MODAL FUNCTIONS ====================
+const USD_TO_NGN = 1500;
+
+function selectPlan(planName, amount) {
+    // Check if user is logged in (you can modify this check)
+    const amountNaira = amount * USD_TO_NGN;
+    
+    // Update modal content
+    document.getElementById('selectedPlanName').textContent = `${planName} Plan`;
+    document.getElementById('selectedPlanAmount').innerHTML = `₦${amountNaira.toLocaleString()}`;
+    
+    // Show modal
+    document.getElementById('paymentModal').style.display = 'flex';
+}
+
+function closePaymentModal() {
+    document.getElementById('paymentModal').style.display = 'none';
+}
+
+function copyBankDetails(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        showNotification('Copied to clipboard!', 'success');
+    }).catch(() => {
+        alert('Failed to copy. Please copy manually.');
+    });
+}
+
+// Simple notification function
+function showNotification(message, type) {
+    alert(message);
+}
