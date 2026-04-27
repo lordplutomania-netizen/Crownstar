@@ -546,76 +546,76 @@
     </div>
 </footer>
 <!-- Payment Modal -->
-<div id="paymentModal" class="payment-modal-container" style="display: none;">
-    <div class="payment-modal-overlay" onclick="closePaymentModal()"></div>
-    <div class="payment-modal-box">
-        <div class="payment-modal-header">
-            <h3>Complete Your Enrollment</h3>
-            <button class="payment-modal-close" onclick="closePaymentModal()">&times;</button>
+<div id="paymentModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center;">
+    <div style="background: white; max-width: 500px; width: 90%; border-radius: 20px; position: relative; animation: slideIn 0.3s ease;">
+        <div style="background: linear-gradient(135deg, #DC2626, #EA580C); padding: 20px; border-radius: 20px 20px 0 0; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="color: white; margin: 0;">Complete Your Enrollment</h3>
+            <button onclick="closePaymentModal()" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer;">&times;</button>
         </div>
         
-        <div class="payment-modal-body">
-            <div class="plan-details">
-                <p>Selected Plan: <strong id="selectedPlanName">Monthly Plan</strong></p>
-                <p>Amount to Pay: <strong id="selectedPlanAmount">₦0</strong></p>
+        <div style="padding: 24px;">
+            <div style="background: #FEE2E2; padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                <p style="margin: 5px 0;"><strong>Selected Plan:</strong> <span id="selectedPlanName">Monthly Plan</span></p>
+                <p style="margin: 5px 0;"><strong>Amount to Pay:</strong> <span id="selectedPlanAmount" style="color: #DC2626; font-size: 20px;">₦0</span></p>
             </div>
 
-            <div class="bank-transfer-section">
-                <div class="bank-title">
-                    <i class="fas fa-university"></i>
-                    <h4>Bank Transfer Details</h4>
+            <div style="margin-bottom: 20px;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                    <i class="fas fa-university" style="color: #DC2626; font-size: 20px;"></i>
+                    <h4 style="margin: 0;">Bank Transfer Details</h4>
                 </div>
                 
-                <div class="bank-details">
-                    <div class="bank-row">
-                        <span class="bank-label">Bank Name:</span>
-                        <span class="bank-value">Wema Bank</span>
+                <div style="background: #F9FAFB; border-radius: 12px; padding: 15px;">
+                    <div style="display: flex; padding: 10px 0; border-bottom: 1px solid #E5E7EB; flex-wrap: wrap;">
+                        <span style="width: 120px; font-weight: 600;">Bank Name:</span>
+                        <span style="flex: 1;">Wema Bank</span>
                     </div>
-                    <div class="bank-row">
-                        <span class="bank-label">Account Number:</span>
-                        <span class="bank-value highlight">0292589355</span>
-                        <button class="copy-bank-btn" onclick="copyBankDetails('0292589355')">
-                            <i class="far fa-copy"></i> Copy
-                        </button>
+                    <div style="display: flex; padding: 10px 0; border-bottom: 1px solid #E5E7EB; flex-wrap: wrap; align-items: center;">
+                        <span style="width: 120px; font-weight: 600;">Account Number:</span>
+                        <span style="flex: 1; font-weight: 700; color: #DC2626;">0292589355</span>
+                        <button onclick="copyToClipboard('0292589355')" style="background: none; border: 1px solid #DC2626; color: #DC2626; padding: 5px 12px; border-radius: 6px; cursor: pointer;">Copy</button>
                     </div>
-                    <div class="bank-row">
-                        <span class="bank-label">Account Name:</span>
-                        <span class="bank-value">Elugbaju Oluwafolajinmi Emmanuel</span>
-                        <button class="copy-bank-btn" onclick="copyBankDetails('Elugbaju Oluwafolajinmi Emmanuel')">
-                            <i class="far fa-copy"></i> Copy
-                        </button>
+                    <div style="display: flex; padding: 10px 0; border-bottom: 1px solid #E5E7EB; flex-wrap: wrap; align-items: center;">
+                        <span style="width: 120px; font-weight: 600;">Account Name:</span>
+                        <span style="flex: 1;">Elugbaju Oluwafolajinmi Emmanuel</span>
+                        <button onclick="copyToClipboard('Elugbaju Oluwafolajinmi Emmanuel')" style="background: none; border: 1px solid #DC2626; color: #DC2626; padding: 5px 12px; border-radius: 6px; cursor: pointer;">Copy</button>
                     </div>
-                </div>
-
-                <div class="payment-instructions-box">
-                    <h5><i class="fas fa-info-circle"></i> Payment Instructions:</h5>
-                    <ol>
-                        <li>Make a transfer to the account details above</li>
-                        <li>Use your <strong>email address</strong> as payment reference</li>
-                        <li>After payment, send your payment receipt/screenshot to:</li>
-                    </ol>
-                    
-                    <div class="whatsapp-buttons">
-                        <a href="https://wa.me/2347026563437" target="_blank" class="whatsapp-group-btn">
-                            <i class="fab fa-whatsapp"></i> Send to WhatsApp Group
-                        </a>
-                        <a href="https://wa.me/2347026563437" target="_blank" class="whatsapp-mentor-btn">
-                            <i class="fab fa-whatsapp"></i> Send to Mentor Directly
-                        </a>
-                    </div>
-                    
-                    <p class="activation-note">
-                        <i class="fas fa-clock"></i> Your account will be activated within 24 hours after sending your receipt.
-                    </p>
                 </div>
             </div>
-        </div>
-        
-        <div class="payment-modal-footer">
-            <button class="close-modal-btn" onclick="closePaymentModal()">Close</button>
+
+            <div style="background: #FFF5F5; padding: 16px; border-radius: 12px; margin-bottom: 20px;">
+                <h5 style="margin: 0 0 12px 0; color: #DC2626;">Payment Instructions:</h5>
+                <ol style="margin: 0 0 16px 20px; padding: 0;">
+                    <li style="margin-bottom: 8px;">Make a transfer to the account details above</li>
+                    <li style="margin-bottom: 8px;">Use your <strong>email address</strong> as payment reference</li>
+                    <li style="margin-bottom: 8px;">After payment, send your receipt/screenshot to:</li>
+                </ol>
+                
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="https://wa.me/2347026563437" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 10px 18px; border-radius: 50px; text-decoration: none; font-weight: 600;">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Group
+                    </a>
+                    <a href="https://wa.me/2347026563437" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #075E54; color: white; padding: 10px 18px; border-radius: 50px; text-decoration: none; font-weight: 600;">
+                        <i class="fab fa-whatsapp"></i> Contact Mentor
+                    </a>
+                </div>
+                
+                <p style="font-size: 12px; color: #6B7280; text-align: center; margin: 12px 0 0 0;">
+                    <i class="fas fa-clock"></i> Account activated within 24 hours after sending receipt.
+                </p>
+            </div>
+
+            <button onclick="closePaymentModal()" style="width: 100%; padding: 12px; background: transparent; border: 2px solid #6B7280; color: #6B7280; border-radius: 10px; cursor: pointer; font-weight: 600;">Close</button>
         </div>
     </div>
 </div>
+
+<style>
+    @keyframes slideIn {
+        from { transform: translateY(-50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+</style>
 
 <script src="crownstarfx.js"></script>
 </body>
